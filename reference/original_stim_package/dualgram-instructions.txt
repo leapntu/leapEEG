@@ -1,0 +1,88 @@
+DUAL GRAMMAR TASK - INSTRUCTIONS TO PARTICIPANTS AND ORDER OF PRESENTATION OF PARTS OF EXPERIMENT
+
+Hello! Welcome to our cognitive brain training game! Test your attention abilities and the way you can improve them! If you complete the following tasks successfully, you may improve your cognitive abilities!
+
+The game has 6 rounds, lasting approximately 12 minutes overall. Your task is to pay close attention to the sequences of words. It is important to pay attention to the words as you will be tested on what you have heard later on! We believe that though this task is demanding, it will pay off.
+
+You will be given a break at the end of each round. Please rest for as long as you need to during the breaks given, or continue to the next round if you are able to power through!
+
+Please ensure that you are in a quiet room and have earphones to listen to the words before starting the task. 
+
+Press <b>SPACEBAR</b> when you are ready. 
+
+###
+[play block1 (and all following training blocks) in fixed sequence order]
+###
+
+You can now take a break for as long as you need to before continuing.
+
+Please press <b>SPACEBAR</b> when you are ready to continue.
+
+###
+[block2]
+###
+
+You can now take a break for as long as you need to before continuing.
+
+Please press <b>SPACEBAR</b> when you are ready to continue.
+
+###
+[block3]
+###
+
+WELL DONE! You are halfway done!
+You can now take a break for as long as you need to before continuing.
+
+Please press <b>SPACEBAR</b> when you are ready to continue.
+
+###
+[block4]
+###
+
+You can now take a break for as long as you need to before continuing.
+
+Please press <b>SPACEBAR</b> when you are ready to continue.
+
+###
+[block5]
+###
+You can now take a break for as long as you need to before continuing.
+
+Please press <b>SPACEBAR</b> when you are ready to continue.
+
+###
+Well done!
+
+The  sequences that you have just heard were generated according to a set of rules that determined the order of words within each sequence.
+
+You will now hear a new set of  sequences. Half of these sequences will conform to the same set of rules as before, and the rest will not. Your task is to judge which of the sequences follow the same rules as before and which do not.
+
+If the  sequence follows the same roles as before, press <b>Y</b>.
+If the  sequence does not follow the same rules as before, 
+press <b>N</b>.
+If you are unsure, please respond with your gut feeling. 
+
+Press <b>SPACEBAR</b> when you are ready to begin.
+
+###
+
+[Present each test sequence in random order, after which...]
+
+Did the  sequence follow the same rules as before?
+
+<b>Y (YES)</b>                                     <b>N (NO)</b>
+
+
+
+
+###
+You have now come to the end of our experiment.
+For more information on our study, please refer to our debrief notes.
+
+Thank you for your time and participation!
+
+
+
+
+
+

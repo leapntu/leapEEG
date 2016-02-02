@@ -1,0 +1,146 @@
+b:1
+GramA X M X M
+GramA V T T V T M
+GramB Y Q Z P
+GramB Y Z Z Q Z P
+GramB W P Z Q Z P
+GramA V T V T R V M
+GramA V T V T M
+GramA X X R T T V M
+GramA V V M
+GramB W W P
+GramB Y Y Z W P
+GramB Y Z Z Y Z W P
+GramB W Q Q W P
+GramA X X R V M
+GramA X M M M X M
+GramA X X R V T M
+GramB W P Z Z Q Z P
+GramB Y Z Y Z Q W P
+
+b:2
+GramA V T T V T M
+GramA X X R V T M
+GramA X M X M
+GramB W W P
+GramB Y Z Y Z Q W P
+GramA X X R T T V M
+GramB Y Q Z P
+GramA V V M
+GramA X M M M X M
+GramB W Q Q W P
+GramB Y Y Z W P
+GramB Y Z Z Y Z W P
+GramA V T V T M
+GramA X X R V M
+GramA V T V T R V M
+GramB W P Z Q Z P
+GramB Y Z Z Q Z P
+GramB W P Z Z Q Z P
+
+b:3
+GramA X M M M X M
+GramA X X R T T V M
+GramB Y Z Z Y Z W P
+GramB W W P
+GramB W Q Q W P
+GramB Y Y Z W P
+GramA V T V T R V M
+GramA X X R V M
+GramA V T V T M
+GramB Y Q Z P
+GramB Y Z Z Q Z P
+GramB W P Z Q Z P
+GramA V T T V T M
+GramA V V M
+GramA X M X M
+GramA X X R V T M
+GramB Y Z Y Z Q W P
+GramB W P Z Z Q Z P
+
+b:4
+GramA V T V T R V M
+GramA X X R T T V M
+GramA X X R V M
+GramB W W P
+GramB Y Z Z Q Z P
+GramB Y Q Z P
+GramB W P Z Z Q Z P
+GramA V V M
+GramA V T T V T M
+GramB Y Y Z W P
+GramB W P Z Q Z P
+GramA X X R V T M
+GramA V T V T M
+GramA X M X M
+GramA X M M M X M
+GramB Y Z Y Z Q W P
+GramB Y Z Z Y Z W P
+GramB W Q Q W P
+
+b:5
+GramA V T T V T M
+GramA V V M
+GramB Y Z Z Q Z P
+GramB Y Z Z Y Z W P
+GramB W P Z Q Z P
+GramB Y Z Y Z Q W P
+GramA X M X M
+GramA V T V T M
+GramA X X R T T V M
+GramB W P Z Z Q Z P
+GramB W Q Q W P
+GramB Y Y Z W P
+GramA X X R V M
+GramA V T V T R V M
+GramA X X R V T M
+GramA X M M M X M
+GramB W W P
+GramB Y Q Z P
+
+b:6
+GramA X M X M
+GramA X X R T T V M
+GramA V T T V T M
+GramB Y Z Z Q Z P
+GramB Y Q Z P
+GramB W W P
+GramB Y Y Z W P
+GramA X X R V T M
+GramA V V M
+GramA V T V T R V M
+GramA X M M M X M
+GramB W P Z Z Q Z P
+GramB W Q Q W P
+GramB W P Z Q Z P
+GramA X X R V M
+GramA V T V T M
+GramB Y Z Z Y Z W P
+GramB Y Z Y Z Q W P
+
+b:test
+GramA X M M X M	
+GramA V T T V M	
+GramA V T V M
+GramA V V T R V M
+GramA V V T M 
+UngramA X M V R X M
+UngramA X T X M	
+UngramA V R T R M
+UngramA V R V R X M
+UngramA V V R T X M
+GramB W P Y Z W P
+GramB W Q W P
+GramB W Q P Q Z P
+GramB Y Y Z Q W P
+GramB Y Z Q Z P	
+UngramB W P P W P
+UngramB Y Q Q Y P
+UngramB Y Q Y P	
+UngramB Y Y Q P	
+UngramB Y Y Q Z Y P
+
+
+
+
+
