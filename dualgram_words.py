@@ -1,7 +1,7 @@
 from psychopy import visual, core, event, gui, sound   #, parallel
 import pyglet, os, random, copy
 
-#Environment setup and loading message
+###ENVIRONMENT AND LOADING###
 win = visual.Window()
 
 loadMessage = visual.TextStim(win, text="Loading Stimuli\n\nPlease Wait")
@@ -9,10 +9,7 @@ loadMessage.draw()
 
 win.flip()
 
-#parallel.setPortAddress(0x378)
-#parallel.setData(0)
-
-#Constants and Parameters
+###CONSTANTS AND PARAMETERS###
 gramASymbols = 'M R V T X'.split()
 gramBSymbols = 'P Q W Y Z'.split()
 
@@ -24,23 +21,30 @@ blockFile = 'stimuli/metadata/order.txt'
 gramAStims = [ sound.Sound(name=filename) for filename in gramAFiles ]
 gramBStims = [ sound.Sound(name=filename) for filename in gramBFiles ]
 
+port = parallel.ParallelPort(0x378)
+port.setData(0)
+
 codes = {
     'gramA': 0,
     'gramB': 2,
     'UngramA': 1,
     'UngramB': 3 }
 
+###FUNCTION DEFINITIONS###
 def parseBlocks(blockFile):
+#Data Types
     blockTemplate = { 'id': 0 , 'bites': [] }
     biteTemplate = { 'grammar': '' , 'symbols': [] }
     parseData = { 'blocks': [], 'line': '', 'reader': open(blockFile) }
 
+#Data Type Functions
     def init(template):
         return lambda : copy.deepcopy(template)
 
     newBlock = init(blockTemplate)
     newBite = init(biteTemplate)
 
+#Processing Functions
     def startsWith(str):
         return lambda l : l.startswith(str)
 
@@ -77,6 +81,7 @@ def parseBlocks(blockFile):
             nextline()
         return block
 
+#Algorithm
     nextline()
     while getline() != '':
         if isBlock(getline()):
@@ -85,19 +90,18 @@ def parseBlocks(blockFile):
     parseData['reader'].close()
     return parseData['blocks']
 
+#Create map between symbols in block and playable stimuli
 def setSymbols():
-    dict = {}
+    lookupDict = {}
     random.shuffle(gramASymbols)
     random.shuffle(gramBSymbols)
     for symbol, stimuli in zip(gramASymbols, gramAStims):
-        dict[symbol] = stimuli
+        lookupDict[symbol] = stimuli
     for symbol, stimuli in zip(gramBSymbols, gramBStims):
-        dict[symbol] = stimuli
-    return dict
+        lookupDict[symbol] = stimuli
+    return lookupDict
 
-blocks = parseBlocks(blockFile)
-lookup = setSymbols()
-
+#Experiment control functions
 def playBite(bite):
     for symbol in bite['symbols']:
         stim = lookup[symbol]
@@ -121,6 +125,10 @@ def playBlocks(blocks):
         elif block['id'] == 'test':
             playTestBlock(block)
 
+###MAIN ROUTINE###
+#Get experiment blocks from file, create symbol map, and play all blocks of experiment
+blocks = parseBlocks(blockFile)
+lookup = setSymbols()
 playBlocks(blocks)
 
 win.close()
