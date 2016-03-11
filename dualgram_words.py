@@ -13,7 +13,7 @@ win.flip()
 gramASymbols = 'M R V T X'.split()
 gramBSymbols = 'P Q W Y Z'.split()
 
-expDir = 'C:\Users\leaplab\Desktop\leapEEG(syncWithGitHub)\\'
+expDir = 'C:\Users\leaplab\Desktop\leapEEG\\'
 stimuliDir = expDir + 'stimuli\\'
 gramADir = stimuliDir + 'gram_a\\'
 gramBDir = stimuliDir + 'gram_b\\'
@@ -26,7 +26,8 @@ blockFile = 'stimuli/metadata/order.txt'
 gramAStims = [ sound.Sound(gramADir+filename) for filename in gramAFiles ]
 gramBStims = [ sound.Sound(gramBDir+filename) for filename in gramBFiles ]
 
-port = parallel.ParallelPort(0x378)
+port = parallel.ParallelPort(0x0378)
+core.wait(2)
 port.setData(0)
 
 ###FUNCTION DEFINITIONS###
@@ -79,10 +80,10 @@ def parseBlocks(blockFile):
         while isBite(getline()):
             block['bites'].append(readBite(block))
             if block['id'] == 'test': #code test bites in sequence in file
-              block['bites'][-1].code = lineNum
+              block['bites'][-1]['code'] = lineNum
               lineNum += 1
             elif block['id'] != 'test': #ignore non-test bites and code uniformly
-              block['bites'][-1].code = 21
+              block['bites'][-1]['code'] = 21
             nextline()
         return block
 
@@ -107,18 +108,15 @@ def setSymbols():
     return lookupDict
 
 #Experiment control functions
-def sendCode(code):
-  global port
-  port.setData(code)
-  port.setData(0)
-
 def playBite(bite):
     for symbol in bite['symbols']:
         stim = lookup[symbol]
         duration = stim.getDuration()
-        sendCode(bite['code'])
+        code = bite['code']
+        port.setData(code)
         stim.play()
         core.wait(duration)
+        port.setData(0)
 
 def playTrainingBlock(block):
     for bite in block['bites']:
@@ -140,6 +138,7 @@ def playBlocks(blocks):
 #Get experiment blocks from file, create symbol map, and play all blocks of experiment
 blocks = parseBlocks(blockFile)
 lookup = setSymbols()
+win.flip()
 playBlocks(blocks)
 
 win.close()
