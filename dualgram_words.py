@@ -13,13 +13,18 @@ win.flip()
 gramASymbols = 'M R V T X'.split()
 gramBSymbols = 'P Q W Y Z'.split()
 
-gramAFiles = os.listdir('stimuli/gram_a')
-gramBFiles = os.listdir('stimuli/gram_b')
+expDir = 'C:\Users\leaplab\Desktop\leapEEG(syncWithGitHub)\\'
+stimuliDir = expDir + 'stimuli\\'
+gramADir = stimuliDir + 'gram_a\\'
+gramBDir = stimuliDir + 'gram_b\\'
+
+gramAFiles = os.listdir(gramADir)
+gramBFiles = os.listdir(gramBDir)
 
 blockFile = 'stimuli/metadata/order.txt'
 
-gramAStims = [ sound.Sound(name=filename) for filename in gramAFiles ]
-gramBStims = [ sound.Sound(name=filename) for filename in gramBFiles ]
+gramAStims = [ sound.Sound(gramADir+filename) for filename in gramAFiles ]
+gramBStims = [ sound.Sound(gramBDir+filename) for filename in gramBFiles ]
 
 port = parallel.ParallelPort(0x378)
 port.setData(0)
