@@ -1,4 +1,4 @@
-from psychopy import visual, core, event, gui, sound   #, parallel
+from psychopy import visual, core, event, gui, sound, parallel
 import pyglet, os, random, copy
 
 ###ENVIRONMENT AND LOADING###
