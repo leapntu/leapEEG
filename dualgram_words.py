@@ -29,12 +29,6 @@ gramBStims = [ sound.Sound(gramBDir+filename) for filename in gramBFiles ]
 port = parallel.ParallelPort(0x378)
 port.setData(0)
 
-codes = {
-    'gramA': 0,
-    'gramB': 2,
-    'UngramA': 1,
-    'UngramB': 3 }
-
 ###FUNCTION DEFINITIONS###
 def parseBlocks(blockFile):
 #Data Types
@@ -81,8 +75,14 @@ def parseBlocks(blockFile):
         block = newBlock()
         block['id'] = getline().split(':')[1].strip()
         nextline()
+        lineNum = 1 #counter for bite number in block (ignored for non-test bites)
         while isBite(getline()):
             block['bites'].append(readBite(block))
+            if block['id'] == 'test': #code test bites in sequence in file
+              block['bites'][-1].code = lineNum
+              lineNum += 1
+            elif block['id'] != 'test': #ignore non-test bites and code uniformly
+              block['bites'][-1].code = 21
             nextline()
         return block
 
@@ -107,10 +107,16 @@ def setSymbols():
     return lookupDict
 
 #Experiment control functions
+def sendCode(code):
+  global port
+  port.setData(code)
+  port.setData(0)
+
 def playBite(bite):
     for symbol in bite['symbols']:
         stim = lookup[symbol]
         duration = stim.getDuration()
+        sendCode(bite['code'])
         stim.play()
         core.wait(duration)
 
@@ -119,9 +125,9 @@ def playTrainingBlock(block):
         playBite(bite)
 
 def playTestBlock(testBlock):
-    for bite in testBlock:
+    random.shuffle(testBlock['bites'])
+    for bite in testBlock['bites']:
         playBite(bite)
-        #parallel.setData(codes[ bite['grammar'] ])
 
 def playBlocks(blocks):
     for block in blocks:
