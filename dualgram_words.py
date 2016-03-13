@@ -2,7 +2,9 @@ from psychopy import visual, core, event, gui, sound, parallel
 import pyglet, os, random, copy
 
 ###ENVIRONMENT AND LOADING###
+mode = 'load'
 win = visual.Window()
+key = pyglet.window.key
 
 loadMessage = visual.TextStim(win, text="Loading Stimuli\n\nPlease Wait")
 loadMessage.draw()
@@ -10,6 +12,28 @@ loadMessage.draw()
 win.flip()
 
 ###CONSTANTS AND PARAMETERS###
+
+introMessage = "DUAL GRAMMAR TASK - INSTRUCTIONS TO PARTICIPANTS AND ORDER OF PRESENTATION OF PARTS OF EXPERIMENT\nHello! Welcome to our cognitive brain training game! Test your attention abilities and the way you can improve them! If you complete the following tasks successfully, you may improve your cognitive abilities!\nThe game has 6 rounds, lasting approximately 12 minutes overall. Your task is to pay close attention to the sequences of words. It is important to pay attention to the words as you will be tested on what you have heard later on! We believe that though this task is demanding, it will pay off.\nYou will be given a break at the end of each round. Please rest for as long as you need to during the breaks given, or continue to the next round if you are able to power through!\nPlease ensure that you are in a quiet room and have earphones to listen to the words before starting the task.\nPress <b>SPACEBAR</b> when you are ready."
+
+restMessage = "You can now take a break for as long as you need to before continuing.\nPlease press <b>SPACEBAR</b> when you are ready to continue."
+
+halfwayMessage = "WELL DONE! You are halfway done!\n"+breakMessage
+
+preTestMessage = "Well done!\nThe  sequences that you have just heard were generated according to a set of rules that determined the order of words within each sequence.\nYou will now hear a new set of  sequences. Half of these sequences will conform to the same set of rules as before, and the rest will not. Your task is to judge which of the sequences follow the same rules as before and which do not.\nIf the  sequence follows the same roles as before, press <b>Y</b>.\nIf the  sequence does not follow the same rules as before,\npress <b>N</b>.\nIf you are unsure, please respond with your gut feeling.\nPress <b>SPACEBAR</b> when you are ready to begin."
+
+testMessage = "Did the  sequence follow the same rules as before?\n<b>Y (YES)</b>                                     <b>N (NO)</b>"
+
+goodbyeMessage = "You have now come to the end of our experiment.\nFor more information on our study, please refer to our debrief notes.\nThank you for your time and participation!"
+
+intro = visual.TextStim(win, text=introMessage)
+rest = visual.TextStim(win, text=restMessage)
+halfway = visual.TextStim(win, text=halfwayMessage)
+preTest = visual.TextStim(win, text=preTestMessage)
+test = visual.TextStim(win, text=testMessage)
+goodbye = visual.TextStim(win, text=goodbyeMessage)
+
+fixation = visual.ImageStim(win, stimuliDir + )
+
 gramASymbols = 'M R V T X'.split()
 gramBSymbols = 'P Q W Y Z'.split()
 
@@ -29,6 +53,8 @@ gramBStims = [ sound.Sound(gramBDir+filename) for filename in gramBFiles ]
 port = parallel.ParallelPort(0x0378)
 core.wait(2)
 port.setData(0)
+
+data = []
 
 ###FUNCTION DEFINITIONS###
 def parseBlocks(blockFile):
@@ -121,24 +147,47 @@ def playBite(bite):
 def playTrainingBlock(block):
     for bite in block['bites']:
         playBite(bite)
+    
 
 def playTestBlock(testBlock):
+    global data
     random.shuffle(testBlock['bites'])
     for bite in testBlock['bites']:
         playBite(bite)
+        test.draw()
+        win.flip()
+        event.waitKeys(keyList=['y','n'])
+        answer = event.getKeys()[0]
+        data.append(answer)
 
 def playBlocks(blocks):
+    global mode
     for block in blocks:
+      fixation.draw()
+      win.flip()
         if block['id'] != 'test':
             playTrainingBlock(block)
+            if block['id'] == 3:
+              halfway.draw()
+            elif block['id'] != 3:
+              rest.draw()
+            win.flip()
+            event.waitKeys(keyList=['SPACE'])
         elif block['id'] == 'test':
+            preTest.draw()
+            win.flip()
+            event.waitKeys(keyList=['SPACE'])
             playTestBlock(block)
+            goodbye.draw()
+            win.flip()
+            event.waitKeys(keyList=['SPACE'])
+            win.close()
 
 ###MAIN ROUTINE###
 #Get experiment blocks from file, create symbol map, and play all blocks of experiment
 blocks = parseBlocks(blockFile)
 lookup = setSymbols()
+intro.draw()
 win.flip()
+event.waitKeys(keyList=['SPACE'])
 playBlocks(blocks)
-
-win.close()
