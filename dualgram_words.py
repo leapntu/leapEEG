@@ -4,7 +4,6 @@ import pyglet, os, random, copy
 ###ENVIRONMENT AND LOADING###
 mode = 'load'
 win = visual.Window()
-key = pyglet.window.key
 
 loadMessage = visual.TextStim(win, text="Loading Stimuli\n\nPlease Wait")
 loadMessage.draw()
@@ -32,8 +31,6 @@ preTest = visual.TextStim(win, text=preTestMessage)
 test = visual.TextStim(win, text=testMessage)
 goodbye = visual.TextStim(win, text=goodbyeMessage)
 
-fixation = visual.ImageStim(win, stimuliDir + )
-
 gramASymbols = 'M R V T X'.split()
 gramBSymbols = 'P Q W Y Z'.split()
 
@@ -49,6 +46,8 @@ blockFile = 'stimuli/metadata/order.txt'
 
 gramAStims = [ sound.Sound(gramADir+filename) for filename in gramAFiles ]
 gramBStims = [ sound.Sound(gramBDir+filename) for filename in gramBFiles ]
+
+fixation = visual.ImageStim(win, stimuliDir + 'fix.png')
 
 port = parallel.ParallelPort(0x0378)
 core.wait(2)
@@ -153,11 +152,12 @@ def playTestBlock(testBlock):
     global data
     random.shuffle(testBlock['bites'])
     for bite in testBlock['bites']:
+        fixation.draw()
+        win.flip()
         playBite(bite)
         test.draw()
         win.flip()
-        event.waitKeys(keyList=['y','n'])
-        answer = event.getKeys()[0]
+        answer = event.waitKeys(keyList=['y','n'])[0]
         data.append(answer)
 
 def playBlocks(blocks):
@@ -172,15 +172,15 @@ def playBlocks(blocks):
             elif block['id'] != 3:
               rest.draw()
             win.flip()
-            event.waitKeys(keyList=['SPACE'])
+            event.waitKeys(keyList=['space'])
         elif block['id'] == 'test':
             preTest.draw()
             win.flip()
-            event.waitKeys(keyList=['SPACE'])
+            event.waitKeys(keyList=['space'])
             playTestBlock(block)
             goodbye.draw()
             win.flip()
-            event.waitKeys(keyList=['SPACE'])
+            event.waitKeys(keyList=['space'])
             win.close()
 
 ###MAIN ROUTINE###
