@@ -3,7 +3,6 @@ import pyglet, os, random, copy
 from pyo import *
 
 ###ENVIRONMENT AND LOADING###
-mode = 'load'
 win = visual.Window()
 
 loadMessage = visual.TextStim(win, text="Loading Stimuli\n\nPlease Wait")
@@ -138,20 +137,26 @@ def setSymbols():
 
 #Experiment control functions
 def playBite(bite):
+    code = bite['code']
+    duration = 1
+    isi = .2
+    if code != 21:
+      isi = .8
     for symbol in bite['symbols']:
         stim = lookup[symbol]
-        duration = 1
-        code = bite['code']
         port.setData(code)
         stim.draw()
         win.flip()
         core.wait(duration)
+        win.flip()
+        core.wait(isi)
         port.setData(0)
 
 def playTrainingBlock(block):
     for bite in block['bites']:
         playBite(bite)
-    
+    win.flip()
+    core.wait(1.5)
 
 def playTestBlock(testBlock):
     global data
@@ -165,7 +170,6 @@ def playTestBlock(testBlock):
         data.append([bite['code'], answer])
 
 def playBlocks(blocks):
-    global mode
     for block in blocks:
       if block['id'] != 'test':
           playTrainingBlock(block)
