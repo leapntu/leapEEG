@@ -4,7 +4,7 @@ from pyo import *
 
 ###ENVIRONMENT AND LOADING###
 mode = 'load'
-win = visual.Window()
+win = visual.Window([1280,1024])
 
 loadMessage = visual.TextStim(win, text="Loading Stimuli\n\nPlease Wait")
 loadMessage.draw()
