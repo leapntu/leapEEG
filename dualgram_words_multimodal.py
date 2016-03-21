@@ -191,7 +191,7 @@ def playTrainingBlock(block):
 def playTestBlock(testBlock):
     global data
     random.shuffle(testBlock['bites'])
-    for bite in testBlock['bites'][-1:]:
+    for bite in testBlock['bites']:
         win.flip()
         playBite(bite)
         test.draw()
@@ -200,7 +200,7 @@ def playTestBlock(testBlock):
         data.append([bite['code'], answer])
 
 def playBlocks(blocks):
-    for block in blocks[-1:]:
+    for block in blocks:
       if block['id'] != 'test':
           playTrainingBlock(block)
           if block['id'] == 3:
@@ -215,7 +215,10 @@ def playBlocks(blocks):
           event.waitKeys(keyList=['space'])
           playTestBlock(block)
           output = open('data/'+info[0]+'_'+info[1]+'_'+info[2]+'.txt','w')
+          output.write('\n')
           output.write(str(data))
+          for stim in lookup.items():
+            output.write(stim[0]+','+stim[1][0].fileName+','+stim[1][1].image+'\n')
           output.close()
           goodbye.draw()
           win.flip()
