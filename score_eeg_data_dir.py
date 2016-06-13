@@ -37,6 +37,7 @@ def read_file(path_str):
   return data
 
 def score_response(response):
+  item = str(response[0])
   grammar = get_grammar(response[0])
   grammaticality = get_grammaticality(response[0])
   subject_answer = response[1]
@@ -45,7 +46,7 @@ def score_response(response):
     correct = '1'
   if grammaticality == 'ungrammatical' and subject_answer == 'n':
     correct = '1'
-  return [grammar, grammaticality, subject_answer, correct]
+  return [grammar, grammaticality, subject_answer, correct, item]
 
 def score_responses(response_list):
   scored = []
@@ -59,7 +60,7 @@ def score_responses(response_list):
 
 def write_output(data):
   out = open('eeg_out.csv','w')
-  out.write('subject, grammar, grammaticality, subject_answer, correct, order\n')
+  out.write('subject, grammar, grammaticality, subject_answer, correct, item, order\n')
   for subject, responses in data.items():
     print(responses)
     for response in responses:
