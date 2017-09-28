@@ -1,0 +1,93 @@
+b:1
+GramA X M X M
+GramA V T T V T M
+GramA V T V T R V M
+GramA V T V T M
+GramA X X R T T V M
+GramA V V M
+GramA X X R V M
+GramA X M M M X M
+GramA X X R V T M
+
+b:2
+GramA V T T V T M
+GramA X X R V T M
+GramA X M X M
+GramA X X R T T V M
+GramA X M M M X M
+GramA V T V T M
+GramA X X R V M
+GramA V T V T R V M
+
+b:3
+GramA X M M M X M
+GramA X X R T T V M
+GramA V T V T R V M
+GramA X X R V M
+GramA V T V T M
+GramA V T T V T M
+GramA V V M
+GramA X M X M
+GramA X X R V T M
+
+b:4
+GramA V T V T R V M
+GramA X X R T T V M
+GramA X X R V M
+GramA V V M
+GramA V T T V T M
+GramA X X R V T M
+GramA V T V T M
+GramA X M X M
+GramA X M M M X M
+
+b:5
+GramA V T T V T M
+GramA V V M
+GramA X M X M
+GramA V T V T M
+GramA X X R T T V M
+GramA X X R V M
+GramA V T V T R V M
+GramA X X R V T M
+GramA X M M M X M
+
+b:6
+GramA X M X M
+GramA X X R T T V M
+GramA V T T V T M
+GramA X X R V T M
+GramA V V M
+GramA V T V T R V M
+GramA X M M M X M
+GramA X X R V M
+GramA V T V T M
+
+b:test
+GramA X M M X M	
+GramA V T T V M	
+GramA V T V M
+GramA V V T R V M
+GramA V V T M
+GramA X M V R X M
+GramA X T X M
+GramA V R T R M
+GramA V R V R X M
+GramA V V R T X M
+UngramA X M V R X M
+UngramA X T X M	
+UngramA V R T R M
+UngramA V R V R X M
+UngramA V V R T X M
+UngramA X M V R X M
+UngramA X M V R T X M
+UngramA X T M R T R M
+UngramA V V R T T X M
+UngramA X M R V R X M
+
+
+
+
+
+
+

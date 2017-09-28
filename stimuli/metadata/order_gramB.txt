@@ -1,0 +1,92 @@
+b:1
+GramB Y Q Z P
+GramB Y Z Z Q Z P
+GramB W P Z Q Z P
+GramB W W P
+GramB Y Y Z W P
+GramB Y Z Z Y Z W P
+GramB W Q Q W P
+GramB W P Z Z Q Z P
+GramB Y Z Y Z Q W P
+
+b:2
+GramB W W P
+GramB Y Z Y Z Q W P
+GramB Y Q Z P
+GramB W Q Q W P
+GramB Y Y Z W P
+GramB Y Z Z Y Z W P
+GramB W P Z Q Z P
+GramB Y Z Z Q Z P
+GramB W P Z Z Q Z P
+
+b:3
+GramB Y Z Z Y Z W P
+GramB W W P
+GramB W Q Q W P
+GramB Y Y Z W P
+GramB Y Q Z P
+GramB Y Z Z Q Z P
+GramB W P Z Q Z P
+GramB Y Z Y Z Q W P
+GramB W P Z Z Q Z P
+
+b:4
+GramB W W P
+GramB Y Z Z Q Z P
+GramB Y Q Z P
+GramB W P Z Z Q Z P
+GramB Y Y Z W P
+GramB W P Z Q Z P
+GramB Y Z Y Z Q W P
+GramB Y Z Z Y Z W P
+GramB W Q Q W P
+
+b:5
+GramB Y Z Z Q Z P
+GramB Y Z Z Y Z W P
+GramB W P Z Q Z P
+GramB Y Z Y Z Q W P
+GramB W P Z Z Q Z P
+GramB W Q Q W P
+GramB Y Y Z W P
+GramB W W P
+GramB Y Q Z P
+
+b:6
+GramB Y Z Z Q Z P
+GramB Y Q Z P
+GramB W W P
+GramB Y Y Z W P
+GramB W P Z Z Q Z P
+GramB W Q Q W P
+GramB W P Z Q Z P
+GramB Y Z Z Y Z W P
+GramB Y Z Y Z Q W P
+
+b:test
+GramB W Q W P
+GramB Y Z Q Z P
+GramB W Q P Q Z P
+GramB Y Z Y Z W P 
+GramB Y Y Z Q W P
+GramB W P Y Z W P
+GramB W P Y Z Q W P 
+GramB W Q P Z Q Z P 
+GramB Y Y Z Q Q W P
+GramB W P Z Y Z W P 	
+UngramB W P P W P
+UngramB Y Q Q Y P
+UngramB Y Q Y P	
+UngramB Y Y Q P	
+UngramB Y Y Q Z Y P
+UngramB W P Y Z W P
+UngramB W Q W P
+UngramB Y Z Q Z P
+UngramB Y Z Y Z W P 
+UngramB Y Y Z Q W P
+
+
+
+
+
